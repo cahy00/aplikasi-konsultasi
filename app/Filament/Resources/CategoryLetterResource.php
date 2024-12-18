@@ -31,6 +31,8 @@ class CategoryLetterResource extends Resource
             ]);
     }
 
+		//ini test merge
+
     public static function table(Table $table): Table
     {
         return $table
