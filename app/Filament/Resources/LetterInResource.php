@@ -8,6 +8,7 @@ use App\Models\Employee;
 use App\Models\LetterIn;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
+use Illuminate\Support\Carbon;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -113,24 +114,29 @@ class LetterInResource extends Resource
                     ->sortable()
 										->label('Nomor Surat'),
                 Tables\Columns\TextColumn::make('date_in')
-                    ->date()
+                    // ->date()
+										->formatStateUsing(fn ($state) => Carbon::parse($state)->translatedFormat('d F Y'))
                     ->sortable()
 										->label('Surat Masuk'),
                 Tables\Columns\TextColumn::make('origin_letter')
                     ->searchable()
 										->label('Asal Surat'),
-                Tables\Columns\TextColumn::make('properties_letter')
-                    ->searchable()
-										->label('SIfat Surat'),
+                // Tables\Columns\TextColumn::make('properties_letter')
+                //     ->searchable()
+								// 		->label('SIfat Surat'),
                 Tables\Columns\TextColumn::make('file')
 										->formatStateUsing(fn($state)=>$state ? basename($state) :'Tidak ada Data')
 										->url(fn($record)=>Storage::url($record->file_path)),
             ])
             ->filters([
 								SelectFilter::make('departement')
-								->label('Unit Kerja')
-								->relationship('departement','name')
-								->hidden(fn () => !auth()->user()->hasRole('admin')),
+										->label('Unit Kerja')
+										->relationship('departement','name')
+										->hidden(fn () => !auth()->user()->hasRole('admin')),
+								SelectFilter::make('category_letter')
+										->label('Kategori Surat')
+										->relationship('category_letter','name')
+										->hidden(fn () => !auth()->user()->hasRole('admin')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
