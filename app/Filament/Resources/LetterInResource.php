@@ -2,19 +2,20 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\LetterInResource\Pages;
-use App\Filament\Resources\LetterInResource\RelationManagers;
+use Filament\Forms;
+use Filament\Tables;
 use App\Models\Employee;
 use App\Models\LetterIn;
-use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Filament\Tables\Filters\SelectFilter;
+use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\LetterInResource\Pages;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\LetterInResource\RelationManagers;
 
 class LetterInResource extends Resource
 {
@@ -83,6 +84,15 @@ class LetterInResource extends Resource
             ]);
     }
 
+		public static function getEloquentQuery(): Builder
+		{
+				$user = Auth::user();
+				if($user->hasRole('admin')){
+					return parent::getEloquentQuery();
+				}
+				return parent::getEloquentQuery()->where('departement_id', $user->departement_id);
+		}
+
     public static function table(Table $table): Table
     {
         return $table
@@ -92,7 +102,7 @@ class LetterInResource extends Resource
                     ->sortable()
 										->label('Kategori Surat'),
                 Tables\Columns\TextColumn::make('departement.name')
-                    ->numeric()
+                    // ->numeric()
                     ->sortable()
 										->label('Disposisi Bidang'),
                 Tables\Columns\TextColumn::make('name')
@@ -115,19 +125,12 @@ class LetterInResource extends Resource
                 Tables\Columns\TextColumn::make('file')
 										->formatStateUsing(fn($state)=>$state ? basename($state) :'Tidak ada Data')
 										->url(fn($record)=>Storage::url($record->file_path)),
-                // Tables\Columns\TextColumn::make('created_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
-                // Tables\Columns\TextColumn::make('updated_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
 								SelectFilter::make('departement')
 								->label('Unit Kerja')
-								->relationship('departement','name'),
+								->relationship('departement','name')
+								->hidden(fn () => !auth()->user()->hasRole('admin')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -136,7 +139,8 @@ class LetterInResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+						->defaultGroup('properties_letter');
     }
 
     public static function getRelations(): array

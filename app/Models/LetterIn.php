@@ -35,4 +35,15 @@ class LetterIn extends Model
 		{
 			return $this->belongsTo(Employee::class,'employee_id');
 		}
+
+// 		protected static function boot()
+// {
+//     parent::boot();
+
+//     static::addGlobalScope('departement', function (\Illuminate\Database\Eloquent\Builder $builder) {
+//         if (auth()->check()) {
+//             $builder->where('departement_id', auth()->user()->departement_id);
+//         }
+//     });
+// }
 }
