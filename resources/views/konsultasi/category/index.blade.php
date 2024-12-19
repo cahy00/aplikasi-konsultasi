@@ -1,22 +1,20 @@
-@extends('layouts.app')
+@extends('konsultasi.layouts.app')
 
 @section('title')
-HELPDESK SSCASN
+    KOPACE - Konsultasi Pelayanan Cepat
 @endsection
 
 @section('content')
 <div class="breadcrumbs d-flex align-items-center" style="background-image: url('{{asset('assets/img/contact-header.jpg')}}');">
 	<div class="container position-relative d-flex flex-column align-items-center">
 
-		<h2>HELPDESK SSCASN</h2>
-		
+		<h2>KONSULTASI PELAYANAN CEPAT</h2>
 		<ol>
 			<li></li>
 		</ol>
 
 	</div>
 </div>
-
 
 
 <section id="blog" class="blog">
@@ -27,75 +25,71 @@ HELPDESK SSCASN
 
 			<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
 
+				
 				<article class="blog-details">
-					<h2 class="title">Kumpulan Konsultasi</h2>
-
-					@foreach ($data as $item)
-
-					<div class="post-author d-flex ">
-						{{-- <h4 class="comments-count">8 Comments</h4> --}}
-						<div class="comments">
-							
-							<div id="comment-1" class="comment">
-								<div class="d-flex">
-									<div class="comment-img"><img src="{{asset('assets/bkn/people.png')}}" alt=""></div>
-									<div>
-										<h4><a href="" style="color: black">{{$item->name}}</a> - {{$item->city->name}}</h4>
-										<time>
-											{{$item->question_category->name}}, 
-											{{$item->created_at->format('d M Y')}},  {{$item->created_at->format('H:i')}}
-										</time>
-										<p>
-											{!!$item->pesan!!}
-										</p>
-									</div>
-								</div>
-							</div>
-
-							<div id="comment-reply-1" class="comment comment-reply">
-								<div class="d-flex">
-									<div class="comment-img"><img src="assets/bkn/team.png" alt=""></div>
-									<div>
-										<h5><a href="">Admin Helpdesk</a> <a href="#" class="reply"></a></h5>
-										<time datetime="2020-01-01"></time>
-										<p style="justify-content: center">
-											{!!$item->jawaban!!}
-										</p>
-									</div>
-								</div>
-							</div>
-						</div>	
-						
-					</div>
-					
-					@endforeach
-					<br>
-					{{$data->links()}}
+					<h2 class="title">Kategori {{$kategori->name}}</h2>
 				</article>
+				
+				@foreach ($data as $item)
+
+				<div class="post-author d-flex">
+					{{-- <h4 class="comments-count">8 Comments</h4> --}}
+					<div class="comments">
+						
+						<div id="comment-1" class="comment">
+							<div class="d-flex">
+								<div class="comment-img"><img src="{{asset('assets/bkn/people.png')}}" alt=""></div>
+								<div>
+									<h5><a href="">{{$item->name}}</a> </a></h5>
+									<time>
+										{{$item->question_category->name}}, 
+										{{$item->created_at->format('d M Y')}},  {{$item->created_at->format('H:i')}}
+									</time>
+									<p>
+										{!!$item->pesan!!}
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div id="comment-reply-1" class="comment comment-reply">
+							<div class="d-flex">
+								<div class="comment-img"><img src="{{asset('assets/bkn/team.png')}}" alt=""></div>
+								<div>
+									<h5><a href="">Admin Kopace</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
+									<time datetime="2020-01-01"></time>
+									<p>
+										{!!$item->jawaban!!}
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>	
+					
+				</div>
+				@endforeach
+				
+				<br>
+				{{$data->links()}}
+				
 				<!-- End blog comments -->
 
 			</div>
-
-			
 
 			<div class="col-lg-4" data-aos="fade-up" data-aos-delay="400">
 
 				<div class="sidebar ps-lg-4">
 
-					<img src="{{asset('assets/bkn/logo_bkn.png')}}" alt="" class="img-thumbnail">
-					<br>
-					<br>
-					<br>
 					<div class="sidebar-item search-form">
 						<h3 class="sidebar-title">Cari Solusi</h3>
 						<form action="/all-question" method="GET" class="mt-3">
-							<input type="text" placeholder="Masukkan Pertanyaan atau Nomor HP" name="q" autocomplete="off">
+							<input type="text" placeholder="Masukkan Pertanyaan atau Nomor HP" name="q">
 							<button type="submit"><i class="bi bi-search"></i></button>
 						</form>
 					</div><!-- End sidebar search formn-->
 
 					<div class="sidebar-item categories">
-						<h3 class="sidebar-title">Kategori Pertanyaan</h3>
+						<h3 class="sidebar-title" style="font-weight:bold">Kategori Pertanyaan</h3>
 						<ul class="mt-3">
 							@foreach ($category as $item)
 								<li><a href="/category/{{$item->id}}">{{$item->name}} </li>
@@ -136,19 +130,6 @@ HELPDESK SSCASN
 
 				</div><!-- End Blog Sidebar -->
 
-			</div>
-		</div>
-
-	</div>
-</section>
-
-<section id="call-to-action" class="call-to-action">
-	<div class="container" data-aos="fade-up">
-		<div class="row justify-content-center">
-			<div class="col-lg-6 text-center">
-				<h3>KONSULTASI VIA WHATSAPP</h3>
-				<p>Melangkah ke dunia konsultasi virtual, menjembatani jarak dengan bijak. Kini, solusi hadir di layar, pertanyaan dijawab tanpa batas ruang dan waktu. Bersama-sama kita temukan pemahaman baru, satu konsultasi virtual pada satu kesempatan</p>
-				<a class="cta-btn" href="#">Ajukan</a>
 			</div>
 		</div>
 

@@ -23,7 +23,7 @@ class QuestionController extends Controller
 			$question_category = QuestionCategory::all();
 			$data = Question::join('answers', 'answers.question_id', '=', 'questions.id')->get();
 
-			return view('ask.index', compact('city', 'question_category', 'data'));
+			return view('konsultasi.ask.index', compact('city', 'question_category', 'data'));
     }
 
 		public function all(Request $request)
@@ -43,7 +43,7 @@ class QuestionController extends Controller
 			$category = QuestionCategory::with(['question'])->get();
 			$city = City::with(['question'])->get();
 
-			return view('ask.all', compact('data', 'category', 'city'));
+			return view('konsultasi.ask.all', compact('data', 'category', 'city'));
 		}
 
 		public function allCategory($id)
@@ -52,7 +52,7 @@ class QuestionController extends Controller
 				$data = Question::with(['question_category'])->where('question_category_id', $id)->join('answers', 'answers.question_id', '=', 'questions.id')->latest('questions.created_at')->paginate(5);
 				$category = QuestionCategory::with(['question'])->get();
 				$city = City::with(['question'])->get();
-				return view('category.index', compact('data', 'category', 'city', 'kategori'));
+				return view('konsultasi.category.index', compact('data', 'category', 'city', 'kategori'));
 		}
 
 		public function allCity($id)
@@ -62,7 +62,7 @@ class QuestionController extends Controller
 				$category = QuestionCategory::with(['question'])->get();
 				$count_category = $data->count();
 				$city = City::with(['question'])->get();
-				return view('city.index', compact('data', 'category', 'city', 'kota'));
+				return view('konsultasi.city.index', compact('data', 'category', 'city', 'kota'));
 				// return $count_category;
 		}
 

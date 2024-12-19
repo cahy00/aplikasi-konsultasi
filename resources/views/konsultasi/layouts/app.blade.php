@@ -41,7 +41,7 @@
 <body class="index-page">
 
   <!-- ======= Header ======= -->
-  @include('components.header')
+  @include('konsultasi.components.header')
   <!-- End Header -->
 
   <main id="main">
@@ -57,7 +57,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  @include('components.footer')
+  @include('konsultasi.components.footer')
   @include('sweetalert::alert')
   <!-- End Footer --><!-- End Footer -->
 

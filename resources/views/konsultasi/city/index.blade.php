@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('konsultasi.layouts.app')
 
 @section('title')
     KOPACE - Konsultasi Pelayanan Cepat
@@ -25,12 +25,13 @@
 
 			<div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
 
-				
+
 				<article class="blog-details">
-					<h2 class="title">Kategori {{$kategori->name}}</h2>
+					<h2 class="title">Kab/Kota Domisili {{$kota->name}}</h2>
 				</article>
-				
+
 				@foreach ($data as $item)
+
 
 				<div class="post-author d-flex">
 					{{-- <h4 class="comments-count">8 Comments</h4> --}}
@@ -89,10 +90,10 @@
 					</div><!-- End sidebar search formn-->
 
 					<div class="sidebar-item categories">
-						<h3 class="sidebar-title" style="font-weight:bold">Kategori Pertanyaan</h3>
+						<h3 class="sidebar-title">Kategori Pertanyaan</h3>
 						<ul class="mt-3">
 							@foreach ($category as $item)
-								<li><a href="/category/{{$item->id}}">{{$item->name}} </li>
+								<li> <a href="/category/{{$item->id}}">{{$item->name}} </li>
 							@endforeach
 							{{-- <span>{{$item->count()}}</span></a> --}}
 						</ul>

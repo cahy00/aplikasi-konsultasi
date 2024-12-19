@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('konsultasi.layouts.app')
 
 @section('title')
 KOPACE - Konsultasi Pelayanan Cepat

@@ -19,7 +19,7 @@ Route::get('/category/{id}', [QuestionController::class, 'allCategory']);
 Route::get('/city/{id}', [QuestionController::class, 'allCity']);
 
 Route::get('/', function(){
-  return view('layouts.app1');
+  return view('konsultasi.layouts.app1');
 });
 
 // Route::get('/index2', function(){
