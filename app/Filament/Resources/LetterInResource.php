@@ -10,8 +10,10 @@ use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Illuminate\Support\Carbon;
 use Filament\Resources\Resource;
+use Filament\Tables\Filters\Filter;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Filament\Forms\Components\DatePicker;
 use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\LetterInResource\Pages;
@@ -140,6 +142,41 @@ class LetterInResource extends Resource
 										->label('Kategori Surat')
 										->relationship('category_letter','name')
 										->hidden(fn () => !auth()->user()->hasRole('admin')),
+										Filter::make('created_at')
+                    ->form([
+                        DatePicker::make('created_from')
+                            ->label('Tanggal Awal'),
+                        DatePicker::make('created_until')
+                            ->label('Tanggal Akhir'),
+                    ])
+                    ->query(function (Builder $query, array $data): Builder {
+                        return $query
+                            ->when(
+                                $data['created_from'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '>=', $date),
+                            )
+                            ->when(
+                                $data['created_until'],
+                                fn(Builder $query, $date): Builder => $query->whereDate('created_at', '<=', $date),
+                            );
+                    }),
+								// SelectFilter::make('month')
+								// 		->label('Bulan')
+								// 		->options([
+								// 			'1' => 'Januari',
+								// 			'2' => 'Februari',
+								// 			'3' => 'Maret',
+								// 			'4' => 'April',
+								// 			'5' => 'Mei',
+								// 			'6' => 'Juni',
+								// 			'7' => 'Juli',
+								// 			'8' => 'Agustus',
+								// 			'9' => 'September',
+								// 			'10' => 'Oktober',
+								// 			'11' => 'November',
+								// 			'12' => 'Desember',
+								// 	])
+								// 	->query(fn ($query, $value) => $query->whereMonth('date', $value)),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
@@ -154,7 +191,7 @@ class LetterInResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ])
+							])
 						->defaultGroup('properties_letter');
     }
 
