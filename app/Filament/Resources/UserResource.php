@@ -15,6 +15,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -31,9 +32,7 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Section::make('Pengguna')->schema([
-									Card::make()->schema([
-										TextInput::make('name')
+							TextInput::make('name')
 										->label('Nama Lengkap')
 											->required(),
 										TextInput::make('nip')
@@ -60,13 +59,10 @@ class UserResource extends Resource
 												->relationship('roles', 'name')
 												->multiple()
 												->preload(),
-									])
-								])->columnSpan(1)->columns(2),
-								// Section::make('Unit Kerja')->schema([
-								// 	Select::make('departement_id')
-								// 	->relationship(name:'departements', titleAttribute:'name')
-								// 	->label('Unit Kerja')
-								// ])->columnSpan(1)
+										Select::make('departement_id')
+												->relationship('departements', 'name')
+												->label('Unit Kerja')
+                
             ]);
     }
 
@@ -84,7 +80,9 @@ class UserResource extends Resource
 											'primary',
 											'success' => 'Admin',
 											'warning'	=> 'Penulis',
-										])
+										]),
+								TextColumn::make('departements.name')
+										->label('Unit Kerja')
                 // Tables\Columns\TextColumn::make('email_verified_at')
                 //     ->dateTime()
                 //     ->sortable(),

@@ -23,7 +23,7 @@ class User extends Authenticatable
         'email',
         'password',
 				'nip',
-				// 'departement_id'
+				'departement_id'
     ];
 
     /**
@@ -46,9 +46,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-		// public function departements()
-		// {
-		// 	return $this->belongsTo(Departement::class);
-		// }
+		public function departements()
+		{
+			return $this->belongsTo(Departement::class, 'departement_id');
+		}
 
 }
