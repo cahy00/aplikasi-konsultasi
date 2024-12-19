@@ -81,6 +81,8 @@ class LetterInResource extends Resource
 										->label('Sifat Surat'),
                 Forms\Components\FileUpload::make('file')
                     ->required()
+										->directory('uploads')
+										->disk('public_uploads')
                     ->label('Upload Surat'),
             ]);
     }
@@ -124,9 +126,10 @@ class LetterInResource extends Resource
                 // Tables\Columns\TextColumn::make('properties_letter')
                 //     ->searchable()
 								// 		->label('SIfat Surat'),
-                Tables\Columns\TextColumn::make('file')
-										->formatStateUsing(fn($state)=>$state ? basename($state) :'Tidak ada Data')
-										->url(fn($record)=>Storage::url($record->file_path)),
+                // Tables\Columns\TextColumn::make('file')
+										// ->disk('public_uploads')
+										// ->formatStateUsing(fn($state)=>$state ? basename($state) :'Tidak ada Data')
+										// ->url(fn($record)=>Storage::disk('public_uploads')->url($record->file)),
             ])
             ->filters([
 								SelectFilter::make('departement')
@@ -140,6 +143,12 @@ class LetterInResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\Action::make('download')
+										->label('unduh')
+										->icon('heroicon-o-arrow-down-on-square')
+										->url(fn ($record) => Storage::disk('public_uploads')->url($record->file))
+										->openUrlInNewTab(),
+
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
