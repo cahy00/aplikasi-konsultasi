@@ -14,6 +14,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\BadgeColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -53,13 +54,19 @@ class UserResource extends Resource
 												->password()
 												->required()
 												->maxLength(255),
+										Select::make('roles')
+												->label('Role')
+												->required()
+												->relationship('roles', 'name')
+												->multiple()
+												->preload(),
 									])
 								])->columnSpan(1)->columns(2),
-								Section::make('Unit Kerja')->schema([
-									Select::make('departement_id')
-									->relationship(name:'departements', titleAttribute:'name')
-									->label('Unit Kerja')
-								])->columnSpan(1)
+								// Section::make('Unit Kerja')->schema([
+								// 	Select::make('departement_id')
+								// 	->relationship(name:'departements', titleAttribute:'name')
+								// 	->label('Unit Kerja')
+								// ])->columnSpan(1)
             ]);
     }
 
@@ -71,17 +78,24 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+								BadgeColumn::make('roles.name')
+										->label('Role')
+										->colors([
+											'primary',
+											'success' => 'Admin',
+											'warning'	=> 'Penulis',
+										])
+                // Tables\Columns\TextColumn::make('email_verified_at')
+                //     ->dateTime()
+                //     ->sortable(),
+                // Tables\Columns\TextColumn::make('created_at')
+                //     ->dateTime()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: true),
+                // Tables\Columns\TextColumn::make('updated_at')
+                //     ->dateTime()
+                //     ->sortable()
+                //     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

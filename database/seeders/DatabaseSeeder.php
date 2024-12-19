@@ -26,8 +26,6 @@ class DatabaseSeeder extends Seeder
 		//     'email' => 'test@example.com',
 		// ]);
 
-
-
 		City::create([
 			'name' => 'Kabupaten Sorong',
 			'slug' => 'kabupaten-sorong'
@@ -50,7 +48,7 @@ class DatabaseSeeder extends Seeder
 
 		$data = User::create([
 			'name' => 'Admin',
-			'departement_id' => 1,
+			// 'departement_id' => 1,
 			'email' => 'admin@admin.test',
 			'nip'	=> '199806162022031006',
 			'email_verified_at' => now(),
@@ -59,7 +57,7 @@ class DatabaseSeeder extends Seeder
 
 		$penulis = User::create([
 			'name' => 'Admin Arsip',
-			'departement_id' => 1,
+			// 'departement_id' => 1,
 			'email' => 'penulis@penulis.test',
 			'nip'	=> '000000',
 			'email_verified_at' => now(),

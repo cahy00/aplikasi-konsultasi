@@ -154,4 +154,11 @@ class LetterInResource extends Resource
             'edit' => Pages\EditLetterIn::route('/{record}/edit'),
         ];
     }
+
+		public static function getWidgets(): array
+    {
+        return [
+            LetterInResource\Widgets\TotalSurat::class,
+        ];
+    }
 }
