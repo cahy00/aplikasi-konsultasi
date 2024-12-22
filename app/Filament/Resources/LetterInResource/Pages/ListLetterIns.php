@@ -26,14 +26,14 @@ class ListLetterIns extends ListRecords
 			return [
 				'Semua Pertanyaan' => Tab::make(),
 				'Minggu Ini' => Tab::make()
-				->modifyQueryUsing(fn(Builder $query) => $query->where('created_at', '>=', now()->subWeek()))
-				->badge(LetterIn::query()->where('created_at', '>=', now()->subWeek())->count()),
+				->modifyQueryUsing(fn(Builder $query) => $query->where('date_in', '>=', now()->subWeek()))
+				->badge(LetterIn::query()->where('date_in', '>=', now()->subWeek())->count()),
 				'Bulan Ini' => Tab::make()
-				->modifyQueryUsing(fn(Builder $query) => $query->where('created_at', '>=', now()->subMonth()))
-				->badge(LetterIn::query()->where('created_at', '>=', now()->subMonth())->count()),
+				->modifyQueryUsing(fn(Builder $query) => $query->where('date_in', '>=', now()->subMonth()))
+				->badge(LetterIn::query()->where('date_in', '>=', now()->subMonth())->count()),
 				'Tahun Ini' => Tab::make()
-				->modifyQueryUsing(fn(Builder $query) => $query->where('created_at', '>=', now()->subYear()))
-				->badge(LetterIn::query()->where('created_at', '>=', now()->subYear())->count()),
+				->modifyQueryUsing(fn(Builder $query) => $query->where('date_in', '>=', now()->subYear()))
+				->badge(LetterIn::query()->where('date_in', '>=', now()->subYear())->count()),
 			];
 		}
 }

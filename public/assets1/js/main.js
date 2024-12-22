@@ -1,6 +1,6 @@
 /**
-* Template Name: Append
-* Template URL: https://bootstrapmade.com/append-bootstrap-website-template/
+* Template Name: AgriCulture
+* Template URL: https://bootstrapmade.com/agriculture-bootstrap-website-template/
 * Updated: Aug 07 2024 with Bootstrap v5.3.3
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
@@ -21,6 +21,29 @@
 
   document.addEventListener('scroll', toggleScrolled);
   window.addEventListener('load', toggleScrolled);
+
+  /**
+   * Scroll up sticky header to headers with .scroll-up-sticky class
+   */
+  let lastScrollTop = 0;
+  window.addEventListener('scroll', function() {
+    const selectHeader = document.querySelector('#header');
+    if (!selectHeader.classList.contains('scroll-up-sticky')) return;
+
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop && scrollTop > selectHeader.offsetHeight) {
+      selectHeader.style.setProperty('position', 'sticky', 'important');
+      selectHeader.style.top = `-${header.offsetHeight + 50}px`;
+    } else if (scrollTop > selectHeader.offsetHeight) {
+      selectHeader.style.setProperty('position', 'sticky', 'important');
+      selectHeader.style.top = "0";
+    } else {
+      selectHeader.style.removeProperty('top');
+      selectHeader.style.removeProperty('position');
+    }
+    lastScrollTop = scrollTop;
+  });
 
   /**
    * Mobile nav toggle
@@ -103,56 +126,15 @@
   window.addEventListener('load', aosInit);
 
   /**
-   * Initiate glightbox
+   * Auto generate the carousel indicators
    */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
-
-  /**
-   * Initiate Pure Counter
-   */
-  new PureCounter();
-
-  /**
-   * Init isotope layout and filters
-   */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
-
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
-      });
-    });
-
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
-    });
-
-  });
-
-  /**
-   * Frequently Asked Questions Toggle
-   */
-  document.querySelectorAll('.faq-item h3, .faq-item .faq-toggle').forEach((faqItem) => {
-    faqItem.addEventListener('click', () => {
-      faqItem.parentNode.classList.toggle('faq-active');
+  document.querySelectorAll('.carousel-indicators').forEach((carouselIndicator) => {
+    carouselIndicator.closest('.carousel').querySelectorAll('.carousel-item').forEach((carouselItem, index) => {
+      if (index === 0) {
+        carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel').id}" data-bs-slide-to="${index}" class="active"></li>`;
+      } else {
+        carouselIndicator.innerHTML += `<li data-bs-target="#${carouselIndicator.closest('.carousel').id}" data-bs-slide-to="${index}"></li>`;
+      }
     });
   });
 
@@ -176,43 +158,10 @@
   window.addEventListener("load", initSwiper);
 
   /**
-   * Correct scrolling position upon page load for URLs containing hash links.
+   * Initiate glightbox
    */
-  window.addEventListener('load', function(e) {
-    if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
-            behavior: 'smooth'
-          });
-        }, 100);
-      }
-    }
+  const glightbox = GLightbox({
+    selector: '.glightbox'
   });
-
-  /**
-   * Navmenu Scrollspy
-   */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
-
-  function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
-      if (!section) return;
-      let position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
-      } else {
-        navmenulink.classList.remove('active');
-      }
-    })
-  }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
 
 })();
