@@ -7,11 +7,11 @@
 	<div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
 		<div class="carousel-item active">
-			@foreach ($banner as $item)
-			<img src="uploads/{{$item->file}}" alt="">
+			@foreach ($banner as $banner)
+			<img src="uploads/{{$banner->file}}" alt="">
 			<div class="carousel-container">
-				<h2>{{$item->name}}</h2>
-				<p>{{$item->desc}}</p>
+				<h2>{{$banner->name}}</h2>
+				<p>{{$banner->desc}}</p>
 			</div>
 					
 			@endforeach
@@ -37,28 +37,20 @@
 
 	<div class="container">
 		<div class="row gy-4 justify-content-between align-items-center">
+			@foreach ($headline as $item)
 			<div class="col-lg-6 order-lg-2 position-relative" data-aos="zoom-out">
-				<img src="assets1/img/img_sq_1.jpg" alt="Image" class="img-fluid">
-				<a href="https://www.youtube.com/watch?v=Y7f98aduVJ8" class="glightbox pulsating-play-btn">
-					<span class="play"><i class="bi bi-play-fill"></i></span>
-				</a>
+				<img src="uploads/{{$item->thumbnail}}" alt="Image" class="img-fluid">
+				
 			</div>
 			<div class="col-lg-5 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-				<h2 class="content-title mb-4">Plants Make Life Better</h2>
-				<p class="mb-4">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim
-					necessitatibus placeat, atque qui voluptatem velit explicabo vitae
-					repellendus architecto provident nisi ullam minus asperiores commodi!
-					Tenetur, repellat aliquam nihil illo.
-				</p>
-				<ul class="list-unstyled list-check">
-					<li>Lorem ipsum dolor sit amet</li>
-					<li>Velit explicabo vitae repellendu</li>
-					<li>Repellat aliquam nihil illo</li>
-				</ul>
+				<h2 class="content-title mb-4">{{$item->title}}</h2>
+				<p class="mb-4" style="text-align: justify">{!!strip_tags(Str::words($item->content, 55,'...'))!!}</p>
+				
 
-				<p><a href="#" class="btn-cta">Get in touch</a></p>
+				<p><a href="{{encrypt($item->id)}}" class="btn-cta">Get in touch</a></p>
 			</div>
+			@endforeach
+
 		</div>
 	</div>
 </section><!-- /About 3 Section -->
@@ -205,6 +197,107 @@
 					<p>Necessitatibus eius consequatur</p>
 				</div><!-- End Section Title -->
 			
+				<div class="container">
+			
+					<div class="row gy-5">
+			
+						<div class="col-xl-4 col-md-6">
+							<div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="100">
+			
+								<div class="post-img position-relative overflow-hidden">
+									<img src="assets1/img/blog/blog-1.jpg" class="img-fluid" alt="">
+									<span class="post-date">December 12</span>
+								</div>
+			
+								<div class="post-content d-flex flex-column">
+			
+									<h3 class="post-title">Eum ad dolor et. Autem aut fugiat debitis</h3>
+			
+									<div class="meta d-flex align-items-center">
+										<div class="d-flex align-items-center">
+											<i class="bi bi-person"></i> <span class="ps-2">Julia Parker</span>
+										</div>
+										<span class="px-3 text-black-50">/</span>
+										<div class="d-flex align-items-center">
+											<i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
+										</div>
+									</div>
+			
+									<hr>
+			
+									<a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+			
+								</div>
+			
+							</div>
+						</div><!-- End post item -->
+			
+						<div class="col-xl-4 col-md-6">
+							<div class="post-item position-relative h-100" data-aos="fade-up" data-aos-delay="200">
+			
+								<div class="post-img position-relative overflow-hidden">
+									<img src="assets1/img/blog/blog-2.jpg" class="img-fluid" alt="">
+									<span class="post-date">July 17</span>
+								</div>
+			
+								<div class="post-content d-flex flex-column">
+			
+									<h3 class="post-title">Et repellendus molestiae qui est sed omnis</h3>
+			
+									<div class="meta d-flex align-items-center">
+										<div class="d-flex align-items-center">
+											<i class="bi bi-person"></i> <span class="ps-2">Mario Douglas</span>
+										</div>
+										<span class="px-3 text-black-50">/</span>
+										<div class="d-flex align-items-center">
+											<i class="bi bi-folder2"></i> <span class="ps-2">Sports</span>
+										</div>
+									</div>
+			
+									<hr>
+			
+									<a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+			
+								</div>
+			
+							</div>
+						</div><!-- End post item -->
+			
+						<div class="col-xl-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+							<div class="post-item position-relative h-100">
+			
+								<div class="post-img position-relative overflow-hidden">
+									<img src="assets1/img/blog/blog-3.jpg" class="img-fluid" alt="">
+									<span class="post-date">September 05</span>
+								</div>
+			
+								<div class="post-content d-flex flex-column">
+			
+									<h3 class="post-title">Quia assumenda est et veritati tirana ploder</h3>
+			
+									<div class="meta d-flex align-items-center">
+										<div class="d-flex align-items-center">
+											<i class="bi bi-person"></i> <span class="ps-2">Lisa Hunter</span>
+										</div>
+										<span class="px-3 text-black-50">/</span>
+										<div class="d-flex align-items-center">
+											<i class="bi bi-folder2"></i> <span class="ps-2">Economics</span>
+										</div>
+									</div>
+			
+									<hr>
+			
+									<a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+			
+								</div>
+			
+							</div>
+						</div><!-- End post item -->
+			
+					</div>
+			
+				</div>
+				<br>
 				<div class="container">
 			
 					<div class="row gy-5">

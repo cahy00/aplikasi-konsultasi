@@ -11,7 +11,7 @@ class Post extends Model implements HasMedia
 {
     use HasFactory, InteractsWithMedia;
     protected $fillable = [
-        'category_id', 'title', 'slug', 'content', 'status'
+        'category_id', 'title', 'slug', 'content', 'status', 'is_headline', 'thumbnail'
     ];
 
     public function categories()

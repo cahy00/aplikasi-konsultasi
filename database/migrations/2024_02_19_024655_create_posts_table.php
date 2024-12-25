@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->text('content');
+						$table->string('thumbnail');
             $table->boolean('status')->default(false);
+            $table->boolean('is_headline')->default(false);
             $table->timestamps();
         });
     }

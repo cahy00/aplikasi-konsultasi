@@ -50,9 +50,16 @@ class PostResource extends Resource
                     TextInput::make('slug')
                     ->required()
                     ->readOnly(),
-                    SpatieMediaLibraryFileUpload::make('thumbnail'),
+                    // SpatieMediaLibraryFileUpload::make('thumbnail'),
+										FileUpload::make('thumbnail')
+										->label('Thumbnail Postingan')
+										->directory('post-thumbnail')
+										->disk('public_uploads'),
                     RichEditor::make('content'),
                     Toggle::make('status'),
+                    Toggle::make('is_headline')
+										->label('Postingan Headline'),
+
                 ])
             ]);
     }

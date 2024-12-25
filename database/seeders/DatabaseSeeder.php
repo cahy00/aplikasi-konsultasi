@@ -66,5 +66,20 @@ class DatabaseSeeder extends Seeder
 
 		$data->assignRole('admin');
 		$penulis->assignRole('penulis');
+
+		Category::create([
+			'name' => 'Berita Kepegawaian',
+			'slug' => 'berita-kepegawaian'
+		]);
+
+		Category::create([
+			'name' => 'Artikel Kepegawaian',
+			'slug' => 'artike-kepegawaian'
+		]);
+
+		// Category::create([
+		// 	'name' => 'Pengumuman',
+		// 	'slug' => 'pengumuman'
+		// ]);
 	}
 }

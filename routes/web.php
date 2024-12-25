@@ -20,7 +20,8 @@ Route::post('/question', [QuestionController::class, 'store']);
 Route::get('/category/{id}', [QuestionController::class, 'allCategory']);
 Route::get('/city/{id}', [QuestionController::class, 'allCity']);
 
-Route::get('/', [LandingController::class,'functionBanner']);
+Route::get('/', [LandingController::class,'index']);
+// Route::get('/', [LandingController::class,'functionHeadline']);
 
 // Route::get('/index2', function(){
 //   return view('ask.index2');
