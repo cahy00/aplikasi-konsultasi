@@ -1,17 +1,20 @@
 @extends('website.index')
 
 @section('content')
-		<!-- Hero Section -->
+
 <section id="hero" class="hero section dark-background">
 
 	<div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
 		<div class="carousel-item active">
-			<img src="assets1/img/hero_1.jpg" alt="">
+			@foreach ($banner as $item)
+			<img src="uploads/{{$item->file}}" alt="">
 			<div class="carousel-container">
-				<h2>Farming is the best solution of worlds starvation</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<h2>{{$item->name}}</h2>
+				<p>{{$item->desc}}</p>
 			</div>
+					
+			@endforeach
 		</div>
 
 		<a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
@@ -26,7 +29,7 @@
 
 	</div>
 
-</section><!-- /Hero Section -->
+</section>
 
 
 <!-- About 3 Section -->
