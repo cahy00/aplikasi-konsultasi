@@ -3,7 +3,7 @@
 
 		<a href="" class="logo d-flex align-items-center">
 			<!-- Uncomment the line below if you also wish to use an image logo -->
-			<img src="{{'bkn/logo_bkn.png'}}" alt="AgriCulture" style="min-height: 90px; max-height:90px; min-width:70px;max-width:70px">
+			<img src="{{asset('bkn/logo_bkn.png')}}" alt="AgriCulture" style="min-height: 90px; max-height:90px; min-width:70px;max-width:70px">
 			<h1 class="sitename">Kanreg XIV BKN</h1> 
 		</a>
 

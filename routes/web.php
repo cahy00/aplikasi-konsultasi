@@ -21,9 +21,9 @@ Route::get('/category/{id}', [QuestionController::class, 'allCategory']);
 Route::get('/city/{id}', [QuestionController::class, 'allCity']);
 
 Route::get('/', [LandingController::class,'index']);
+Route::get('/detail-post/{slug}', [LandingController::class,'show']);
+Route::get('/index2', [LandingController::class,'sidedata']);
 // Route::get('/', [LandingController::class,'functionHeadline']);
 
-// Route::get('/index2', function(){
-//   return view('ask.index2');
-// });
+
 

@@ -23,4 +23,12 @@ class Post extends Model implements HasMedia
     {
         return $this->belongsToMany(Tag::class);
     }
+
+		public function scopeDataSide($query, $limit = 6)
+		{
+			return $query->with('categories')
+            ->where('category_id', 1)
+            ->orderBy('created_at', 'desc')
+            ->take($limit);
+		}
 }

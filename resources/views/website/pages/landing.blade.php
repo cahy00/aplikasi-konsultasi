@@ -143,14 +143,14 @@
 			<div class="row">
 				@foreach ($headline as $item)
 					<div class="col-lg-6 mb-4 mb-lg-0">
-						<img src="uploads/{{$item->thumbnail}}" alt="Image " class="img-fluid img-overlap" data-aos="zoom-out">
+						<img src="uploads/{{$item->thumbnail}}" alt="Image " class="img-fluid img-overlap" data-aos="zoom-out" style="min-height: 630px; max-height:630px; min-width:550px;max-width:550px">
 					</div>
 					<div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
 						<h3 class="content-subtitle text-white opacity-50">Headline</h3>
 						<h2 class="content-title mb-4">{{$item->title}}</h2>
 						<p class="opacity-50">{!!strip_tags(Str::words($item->content, 100,'...'))!!}</p>
 
-				<p><a href="{{encrypt($item->id)}}" class="btn-cta">Get in touch</a></p>
+				<p><a href="detail-post/{{$item->slug}}" class="btn-cta">Get in touch</a></p>
 						
 					</div>
 				@endforeach
@@ -199,7 +199,7 @@
 
 						<hr>
 
-						<a href="{{encrypt($item->id)}}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+						<a href="detail-post/{{$item->slug}}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
 					</div>
 

@@ -18,6 +18,23 @@ class LandingController extends Controller
 									return view('website.pages.landing', compact('banner', 'headline', 'article', 'news'));
 		}
 
+		public function show($slug)
+		{
+			$post = Post::where('slug', $slug)->firstOrFail();
+			$news = Post::DataSide()->get();
+
+			// return $post->thumbnail;
+			return view('website.pages.detail-post', compact('post', 'news'));
+		}
+
+		public function sidedata()
+		{
+			// $news = Post::with(['categories'])->where('category_id', 1)->orderBy('created_at','desc')->take(6)->get();
+			$news = Post::DataSide()->get();
+
+			return view('website.layout-detail', compact('news'));
+		}
+
 		// public function functionHeadline()
 		// {
 			
