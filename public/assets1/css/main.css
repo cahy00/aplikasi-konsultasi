@@ -1043,10 +1043,14 @@ section,
 }
 
 .about .content {
-  background: var(--accent-color);
-  color: var(--contrast-color);
+  background: linear-gradient(135deg, #0b224d, #343638);
   padding: 7rem 0;
 }
+
+/* .about .content:hover {
+  background: linear-gradient(135deg, rgba(255, 95, 202, 0.9), rgba(116, 191, 214, 0.9));
+  padding: 7rem 0;
+} */
 
 .about .content .img-overlap {
   margin-top: -150px;
@@ -1078,6 +1082,7 @@ section,
 --------------------------------------------------------------*/
 .services-2 {
   overflow: visible;
+	background: linear-gradient(135deg, #0b224d, #343638);
   margin-bottom: 200px;
 }
 
@@ -1241,13 +1246,138 @@ section,
 }
 
 /*--------------------------------------------------------------
+# Features Section
+--------------------------------------------------------------*/
+.features .nav-tabs {
+  border: 0;
+  background-color: color-mix(in srgb, var(--default-color), transparent 96%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  padding: 6px;
+  width: auto;
+}
+
+.features .nav-item {
+  margin: 0;
+  padding: 0 5px 0 0;
+}
+
+.features .nav-item:last-child {
+  padding-right: 0;
+}
+
+.features .nav-link {
+  background-color: none;
+  color: var(--heading-color);
+  padding: 10px 30px;
+  transition: 0.3s;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+  border: 0;
+  margin: 0;
+}
+
+@media (max-width: 468px) {
+  .features .nav-link {
+    padding: 8px 20px;
+  }
+}
+
+.features .nav-link i {
+  padding-right: 15px;
+  font-size: 48px;
+}
+
+.features .nav-link h4 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.features .nav-link:hover {
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.features .nav-link:hover h4 {
+  color: var(--accent-color);
+}
+
+.features .nav-link.active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.features .nav-link.active h4 {
+  color: var(--contrast-color);
+}
+
+.features .tab-content {
+  margin-top: 30px;
+}
+
+.features .tab-pane h3 {
+  color: var(--heading-color);
+  font-weight: 700;
+  font-size: 32px;
+  position: relative;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+
+.features .tab-pane h3:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  bottom: 0;
+}
+
+.features .tab-pane ul {
+  list-style: none;
+  padding: 0;
+}
+
+.features .tab-pane ul li {
+  padding-top: 10px;
+}
+
+.features .tab-pane ul i {
+  font-size: 20px;
+  padding-right: 4px;
+  color: var(--accent-color);
+}
+
+.features .tab-pane p:last-child {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
 # Recent Posts Section
 --------------------------------------------------------------*/
 .recent-posts .post-item {
-  background: var(--surface-color);
+  /* background: linear-gradient(135deg, #0059ff, #f8f8f8);  */
+	background: #ffffff;
+  /* background: linear-gradient(135deg, #0b224d, #343638); */
+
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
+	transform: translateY(-10px);
+
 }
+
+/* .recent-posts .post-item:hover {
+  background: linear-gradient(135deg, rgba(255, 95, 202, 0.9), rgba(116, 191, 214, 0.9));
+  box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
+} */
 
 .recent-posts .post-item .post-img img {
   transition: 0.5s;
@@ -1373,7 +1503,7 @@ section,
 # About 3 Section
 --------------------------------------------------------------*/
 .about-3 .content-title {
-  color: var(--accent-color);
+  color: linear-gradient(135deg, #89a0ec, #dce1f1); 
   margin-bottom: 30px;
 }
 
@@ -1491,7 +1621,7 @@ section,
 # Blog Posts 2 Section
 --------------------------------------------------------------*/
 .blog-posts-2 article {
-  background-color: var(--surface-color);
+  background-color: linear-gradient(135deg, #89a0ec, #dce1f1);
   box-shadow: 0px 2px 20px rgba(0, 0, 0, 0.1);
   transition: 0.3s;
   border-radius: 8px;

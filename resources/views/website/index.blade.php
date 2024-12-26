@@ -4,13 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - AgriCulture Bootstrap Template</title>
+  <title>Kantor Regional XIV BKN</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="{{asset('assets1/img/favicon.png')}}" rel="icon">
-  <link href="{{asset('assets1/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+  <link href="{{asset('bkn/logo_bkn.png')}}" rel="icon">
+  <link href="{{asset('bkn/logo_bkn.png')}}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
