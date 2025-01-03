@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Website;
 
 use App\Models\Post;
 use App\Models\Banner;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,8 +15,12 @@ class LandingController extends Controller
 			$banner = Banner::select('file')->get();
 			$headline = Post::with(['categories'])->orderBy('created_at','desc')->where('status', 1)->where('is_headline', 1)->take(1)->get();
 			$article = Post::with(['categories'])->where('category_id', 1)->get();
-			$news = Post::with(['categories'])->where('category_id', 1)->where('status', 0)->orderBy('created_at','desc')->take(6)->get();
-									return view('website.pages.landing', compact('banner', 'headline', 'article', 'news'));
+			$news = Post::with(['categories'])->where('category_id', 1)->where('status', 1)->orderBy('created_at','desc')->take(6)->get();
+
+			$announcement = Announcement::all();
+
+
+			return view('website.pages.landing', compact('banner', 'headline', 'article', 'news', 'announcement'));
 		}
 
 		public function show($slug)
@@ -33,6 +38,11 @@ class LandingController extends Controller
 			$news = Post::DataSide()->get();
 
 			return view('website.layout-detail', compact('news'));
+		}
+
+		public function announcement()
+		{
+			
 		}
 
 		// public function functionHeadline()

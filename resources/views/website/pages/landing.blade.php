@@ -92,16 +92,12 @@
 			<div class="tab-pane fade" id="features-tab-2">
 				<div class="row">
 					<div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
-						<h3>Neque exercitationem debitis</h3>
-						<p class="fst-italic">
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-							magna aliqua.
-						</p>
+						<h3>Pengumuman</h3>
+						<h5 class="fst-italic">Pengumuman Penting! Jangan lewatkan informasi terbaru ini. Pastikan untuk menyimak dan mengikuti arahan selengkapnya.</h5>
 						<ul>
-							<li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
-							<li><i class="bi bi-check2-all"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
-							<li><i class="bi bi-check2-all"></i> <span>Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</span></li>
-							<li><i class="bi bi-check2-all"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
+							@foreach ($announcement as $item)
+							<li><i class="bi bi-check2-all"> <span><a href="/detail-announcement/{{encrypt($item->id)}}" style="color: black">{{$item->title}}</a></span></i> </li>
+							@endforeach
 						</ul>
 					</div>
 					<div class="col-lg-6 order-1 order-lg-2 text-center carousel">
@@ -283,33 +279,16 @@
 	</div>
 </section>
 
-<section id="call-to-action" class="call-to-action section light-background">
-
-	<div class="content">
-		<div class="container">
-			<div class="row align-items-center">
-				<div class="col-lg-6">
-					<h3>Subscribe To Our Newsletter</h3>
-					<p class="opacity-50">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Nesciunt, reprehenderit!
-					</p>
-				</div>
-				<div class="col-lg-6">
-					<form action="forms/newsletter.php" class="form-subscribe php-email-form">
-						<div class="form-group d-flex align-items-stretch">
-							<input type="email" name="email" class="form-control h-100" placeholder="Enter your e-mail">
-							<input type="submit" class="btn btn-secondary px-4" value="Subcribe">
-						</div>
-						<div class="loading">Loading</div>
-						<div class="error-message"></div>
-						<div class="sent-message">
-							Your subscription request has been sent. Thank you!
-						</div>
-					</form>
-				</div>
+<section id="call-to-action" class="call-to-action">
+	<div class="container" data-aos="fade-up">
+		<div class="row justify-content-center">
+			<div class="col-lg-6 text-center">
+				<h3>KONSULTASI VIA WHATSAPP</h3>
+				<p>Melangkah ke dunia konsultasi virtual, menjembatani jarak dengan bijak. Kini, solusi hadir di layar, pertanyaan dijawab tanpa batas ruang dan waktu. Bersama-sama kita temukan pemahaman baru, satu konsultasi virtual pada satu kesempatan</p>
+				<a class="cta-btn" href="#">Ajukan</a>
 			</div>
 		</div>
+
 	</div>
 </section>
 

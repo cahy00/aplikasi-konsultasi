@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\Website\LandingController;
+use App\Http\Controllers\Website\AnnouncementController;
 
 
 // Route::get('/', [QuestionController::class, 'all']);
@@ -22,7 +23,8 @@ Route::get('/city/{id}', [QuestionController::class, 'allCity']);
 
 Route::get('/', [LandingController::class,'index']);
 Route::get('/detail-post/{slug}', [LandingController::class,'show']);
-Route::get('/index2', [LandingController::class,'sidedata']);
+Route::get('/announcement', [AnnouncementController::class,'index']);
+Route::get('/detail-announcement/{id}', [AnnouncementController::class,'show']);
 // Route::get('/', [LandingController::class,'functionHeadline']);
 
 
