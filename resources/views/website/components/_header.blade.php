@@ -9,13 +9,14 @@
 
 		<nav id="navmenu" class="navmenu">
 			<ul>
-				<li><a href="/" class="active">Beranda</a></li>
+				<li><a href="/" class="{{ request()->is('/') ? 'active' : '' }}">Beranda</a></li>
 				<li class="dropdown"><a href="#"><span>Profil</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
 					<ul>
-						<li><a href="#">Visi Misi</a></li>
-						<li><a href="#">Sejarah</a></li>
-						<li><a href="#">Struktur Organisasi</a></li>
-						<li><a href="#">Maklumat Pelayanan</a></li>
+						<li><a href="/visi-misi" class="{{ request()->is('/visi-misi') ? 'active' : '' }}">Visi Misi</a></li>
+						<li><a href="/sejarah" class="{{ request()->is('/sejarah') ? 'active' : '' }}">Sejarah</a></li>
+						<li><a href="/tusi" class="{{ request()->is('/tusi') ? 'active' : '' }}">Tugas & Fungsi</a></li>
+						<li><a href="/struktur" class="{{ request()->is('/struktur') ? 'active' : '' }}">Struktur Organisasi</a></li>
+						{{-- <li><a href="#">Maklumat Pelayanan</a></li> --}}
 					</ul>
 				</li>
 				<li class="dropdown"><a href="#"><span>Publikasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>

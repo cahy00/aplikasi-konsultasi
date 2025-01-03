@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\City;
+use App\Models\Post;
 use App\Models\Answer;
 use App\Models\Banner;
 use App\Models\Question;
@@ -25,6 +26,26 @@ Route::get('/', [LandingController::class,'index']);
 Route::get('/detail-post/{slug}', [LandingController::class,'show']);
 Route::get('/announcement', [AnnouncementController::class,'index']);
 Route::get('/detail-announcement/{id}', [AnnouncementController::class,'show']);
+
+Route::get('visi-misi', function(){
+	$news = Post::dataSide()->get();
+	return view('website.pages.visi', compact('news'));
+});
+
+Route::get('sejarah', function(){
+	$news = Post::dataSide()->get();
+	return view('website.pages.sejarah', compact('news'));
+});
+
+Route::get('tusi', function(){
+	$news = Post::dataSide()->get();
+	return view('website.pages.tusi', compact('news'));
+});
+
+Route::get('struktur', function(){
+	$news = Post::dataSide()->get();
+	return view('website.pages.struktur', compact('news'));
+});
 // Route::get('/', [LandingController::class,'functionHeadline']);
 
 
