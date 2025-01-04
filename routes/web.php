@@ -11,6 +11,7 @@ use App\Models\QuestionCategory;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\Website\NewsController;
 use App\Http\Controllers\Website\LandingController;
 use App\Http\Controllers\Website\AnnouncementController;
 
@@ -25,6 +26,8 @@ Route::get('/city/{id}', [QuestionController::class, 'allCity']);
 Route::get('/', [LandingController::class,'index']);
 Route::get('/detail-post/{slug}', [LandingController::class,'show']);
 Route::get('/announcement', [AnnouncementController::class,'index']);
+Route::get('/all-news', [NewsController::class,'allNews']);
+Route::get('/all-article', [NewsController::class,'allArticle']);
 Route::get('/detail-announcement/{id}', [AnnouncementController::class,'show']);
 
 Route::get('visi-misi', function(){

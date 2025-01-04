@@ -12,7 +12,7 @@ class AnnouncementController extends Controller
     public function index()
 		{
 			$news = Post::DataSide()->get();
-			$announcement = Announcement::orderBy("created_at","desc")->paginate(6);
+			$announcement = Announcement::where('is_active', 1)->orderBy("created_at","desc")->paginate(6);
 			return view('website.pages.announcement', compact('news', 'announcement'));
 		}
 

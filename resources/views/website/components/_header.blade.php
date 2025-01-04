@@ -1,7 +1,7 @@
 <header id="header" class="header d-flex align-items-center position-relative">
 	<div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-		<a href="" class="logo d-flex align-items-center">
+		<a href="/" class="logo d-flex align-items-center">
 			<!-- Uncomment the line below if you also wish to use an image logo -->
 			<img src="{{asset('bkn/logo_bkn.png')}}" alt="AgriCulture" style="min-height: 90px; max-height:90px; min-width:70px;max-width:70px">
 			<h1 class="sitename">Kanreg XIV BKN</h1> 
@@ -21,9 +21,10 @@
 				</li>
 				<li class="dropdown"><a href="#"><span>Publikasi</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
 					<ul>
-						<li><a href="#">Berita Kepegawaian</a></li>
-						<li><a href="#">Pengumuman</a></li>
-						<li><a href="#">Regulasi</a></li>
+						<li><a href="/all-news">Berita Kepegawaian</a></li>
+						<li><a href="/all-article">Artikel Kepegawaian</a></li>
+						<li><a href="/announcement">Pengumuman</a></li>
+						<li><a href="https://jdih.bkn.go.id/" target="_blank">Regulasi</a></li>
 						<li class="dropdown"><a href="#"><span>Akuntabilitas Kinerja</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
 							<ul>
 								<li><a href="#">Rencana Strategis</a></li>

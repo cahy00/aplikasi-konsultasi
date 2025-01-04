@@ -8,7 +8,7 @@
 
 		<div class="carousel-item active">
 			@foreach ($banner as $banner)
-			<img src="uploads/{{$banner->file}}" alt="">
+			<img src="uploads/{{$banner->file}}" alt="" class="img-fluid">
 			{{-- <div class="carousel-container">
 				<h2>{{$banner->name}}</h2>
 				<p>{{$banner->desc}}</p>
@@ -139,7 +139,7 @@
 			<div class="row">
 				@foreach ($headline as $item)
 					<div class="col-lg-6 mb-4 mb-lg-0">
-						<img src="uploads/{{$item->thumbnail}}" alt="Image " class="img-fluid img-overlap" data-aos="zoom-out" style="min-height: 630px; max-height:630px; min-width:550px;max-width:550px">
+						<img src="uploads/{{$item->thumbnail}}" alt="Image " class="img-fluid img-overlap" data-aos="zoom-out" style="height: auto; max-height:630px; min-width:550px;max-width:100%">
 					</div>
 					<div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
 						<h3 class="content-subtitle text-white opacity-50">Headline</h3>
@@ -185,7 +185,7 @@
 							</div>
 							<span class="px-3 text-black-50">/</span>
 							<div class="d-flex align-items-center">
-								<i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
+								<i class="bi bi-folder2"></i> <span class="ps-2">Kepegawaian</span>
 							</div>
 						</div>
 						<br>

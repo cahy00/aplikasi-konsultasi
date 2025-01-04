@@ -17,7 +17,7 @@ class LandingController extends Controller
 			$article = Post::with(['categories'])->where('category_id', 1)->get();
 			$news = Post::with(['categories'])->where('category_id', 1)->where('status', 1)->orderBy('created_at','desc')->take(6)->get();
 
-			$announcement = Announcement::all();
+			$announcement = Announcement::where('is_active', 1)->orderBy('created_at', 'DESC')->take(6)->get();
 
 
 			return view('website.pages.landing', compact('banner', 'headline', 'article', 'news', 'announcement'));

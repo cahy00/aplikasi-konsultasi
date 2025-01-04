@@ -2,29 +2,30 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PostResource\Pages;
-use App\Filament\Resources\PostResource\RelationManagers;
-use App\Models\Category;
-use App\Models\Post;
 use Filament\Forms;
+use App\Models\Post;
+use Filament\Tables;
+use Filament\Forms\Set;
+use App\Models\Category;
+use Filament\Forms\Form;
+use Filament\Tables\Table;
+use Illuminate\Support\Str;
+use Filament\Resources\Resource;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Columns\BadgeColumn;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
-use Filament\Forms\Set;
-use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\PostResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
+use App\Filament\Resources\PostResource\RelationManagers;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 
 class PostResource extends Resource
 {
@@ -56,9 +57,23 @@ class PostResource extends Resource
 										->directory('post-thumbnail')
 										->disk('public_uploads'),
                     RichEditor::make('content'),
-                    Toggle::make('status'),
-                    Toggle::make('is_headline')
-										->label('Postingan Headline'),
+                    // Toggle::make('status'),
+										Select::make('status')
+										->label('Status')
+										->options([
+												0 => 'Draft',
+												1 => 'Published',
+										])
+										->default(0) // Default: Draft
+										->required(),
+                    Select::make('is_headline')
+										->label('Postingan Headline')
+										->options([
+												0 => 'Bukan Headline',
+												1 => 'Headline',
+										])
+										->default(0) // Default: Draft
+										->required(),
 
                 ])
             ]);
@@ -69,9 +84,18 @@ class PostResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id'),
-                TextColumn::make('title'),
+                TextColumn::make('title')
+								->words(5),
                 TextColumn::make('categories.name'),
-                SpatieMediaLibraryImageColumn::make('thumbnail')
+                ImageColumn::make('thumbnail')
+								->disk('public_uploads'),
+								BadgeColumn::make('status')
+								->label('Status')
+                ->colors([
+									'success' => fn ($state): bool => $state === 1, // Published
+									'danger' => fn ($state): bool => $state === 0, // Draft
+								])
+								->formatStateUsing(fn ($state) => $state === 1 ? 'Published' : 'Draft'),
                 
             ])
             ->filters([
