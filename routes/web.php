@@ -4,6 +4,7 @@ use App\Models\City;
 use App\Models\Post;
 use App\Models\Answer;
 use App\Models\Banner;
+use App\Models\Document;
 use App\Models\Question;
 use GuzzleHttp\Psr7\Request;
 use App\Models\AnswerQuestion;
@@ -48,6 +49,12 @@ Route::get('tusi', function(){
 Route::get('struktur', function(){
 	$news = Post::dataSide()->get();
 	return view('website.pages.struktur', compact('news'));
+});
+
+Route::get('akuntabilitas', function(){
+	$news = Post::dataSide()->get();
+	$akuntabilitas = Document::with(['categories'])->whereNotIn('category_id', [1,2])->where('is_public', 1)->orderBy('created_at','desc')->paginate(10);
+	return view('website.pages.akuntabilitas', compact('news', 'akuntabilitas'));
 });
 // Route::get('/', [LandingController::class,'functionHeadline']);
 

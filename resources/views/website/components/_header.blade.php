@@ -25,15 +25,7 @@
 						<li><a href="/all-article">Artikel Kepegawaian</a></li>
 						<li><a href="/announcement">Pengumuman</a></li>
 						<li><a href="https://jdih.bkn.go.id/" target="_blank">Regulasi</a></li>
-						<li class="dropdown"><a href="#"><span>Akuntabilitas Kinerja</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-							<ul>
-								<li><a href="#">Rencana Strategis</a></li>
-								<li><a href="#">Perjanjian Kinerja</a></li>
-								<li><a href="#">Rencana Kerja</a></li>
-								<li><a href="#">Rencana Aksi</a></li>
-								<li><a href="#">LAKIP</a></li>
-							</ul>
-						</li>
+						<li><a href="/akuntabilitas">Akuntabilitas Kinerja</a></li>
 						<li><a href="#">Agenda Kegiatan</a></li>
 					</ul>
 				</li>

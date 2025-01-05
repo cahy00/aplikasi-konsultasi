@@ -36,6 +36,7 @@ class CategoryResource extends Resource
             ->schema([
                 TextInput::make('name')
                 ->live(onBlur:true)
+								->autocomplete(false)
                 ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                 ->required(),
                 TextInput::make('slug')
