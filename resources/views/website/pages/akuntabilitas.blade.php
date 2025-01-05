@@ -38,8 +38,13 @@
               <div class="post-content d-flex flex-column">
 
                 <h3 class="post-title">{{$item->title}}</h3>
-								{{-- <p class="px-3 text-black-50">{{$item->categories->name}}</p>
-								<p class="px-3 text-black-50">Tahun Anggaran {{$item->year}}</p> --}}
+								<p class="opacity-50">
+									<span>Dokumen Publik</span>
+									<br>
+									<span>Tahun Anggaran {{$item->year}}</span>
+									
+
+								</p>
                 <a href="uploads/{{$item->file}}" target="_blank" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
               </div>

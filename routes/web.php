@@ -56,6 +56,36 @@ Route::get('akuntabilitas', function(){
 	$akuntabilitas = Document::with(['categories'])->whereNotIn('category_id', [1,2])->where('is_public', 1)->orderBy('created_at','desc')->paginate(10);
 	return view('website.pages.akuntabilitas', compact('news', 'akuntabilitas'));
 });
+
+Route::get('mutasi', function(){
+	$news = Post::dataSide()->get();
+	return view('website.pages.mutasi', compact('news'));
+});
+
+Route::get('pensiun', function(){
+	$news = Post::dataSide()->get();
+	return view('website.pages.pensiun', compact('news'));
+});
+
+Route::get('inka', function(){
+	$news = Post::dataSide()->get();
+	return view('website.pages.inka', compact('news'));
+});
+
+Route::get('pdsk', function(){
+	$news = Post::dataSide()->get();
+	return view('website.pages.pdsk', compact('news'));
+});
+
+Route::get('ppid', function(){
+	$news = Post::dataSide()->get();
+	return view('website.pages.ppid', compact('news'));
+});
+
+Route::get('kontak', function(){
+	$news = Post::dataSide()->get();
+	return view('website.pages.kontak', compact('news'));
+});
 // Route::get('/', [LandingController::class,'functionHeadline']);
 
 

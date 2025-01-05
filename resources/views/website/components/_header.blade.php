@@ -29,10 +29,24 @@
 						<li><a href="#">Agenda Kegiatan</a></li>
 					</ul>
 				</li>
-				<li><a href="services.html">Pengaduan</a></li>
-				<li><a href="testimonials.html">Layanan</a></li>
-				<li><a href="testimonials.html">PPID BKN</a></li>
-				<li><a href="contact.html">Kontak Kami</a></li>
+				<li class="dropdown"><a href="#"><span>Pengaduan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+					<ul>
+						<li><a href="https://support-siasn.bkn.go.id/">Helpdesk SIASN</a></li>
+						<li><a href="https://helpdesk-sscasn.bkn.go.id/">Helpdesk SSCASN</a></li>
+						<li><a href="https://wbs.bkn.go.id/">WBS BKN</a></li>
+						<li><a href="https://www.lapor.go.id/" target="_blank">LAPOR GO</a></li>
+					</ul>
+				</li>
+				<li class="dropdown"><a href="#"><span>Layanan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+					<ul>
+						<li><a href="mutasi">Mutasi dan Status Kepegawaian</a></li>
+						<li><a href="pensiun">Pengangkatan dan Pensiun</a></li>
+						<li><a href="inka">Informasi Kepegawaian</a></li>
+						<li><a href="pdsk">Pengembangan dan Supervisi Kepegawaian</a></li>
+					</ul>
+				</li>
+				<li><a href="ppid">PPID BKN</a></li>
+				<li><a href="kontak">Kontak Kami</a></li>
 			</ul>
 			<i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 		</nav>
