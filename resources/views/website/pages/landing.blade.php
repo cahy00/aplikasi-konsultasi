@@ -6,16 +6,16 @@
 
 	<div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
 
+		@foreach ($banner as $banner)
 		<div class="carousel-item active">
-			@foreach ($banner as $banner)
 			<img src="uploads/{{$banner->file}}" alt="" class="img-fluid">
 			{{-- <div class="carousel-container">
 				<h2>{{$banner->name}}</h2>
 				<p>{{$banner->desc}}</p>
 			</div> --}}
 					
-			@endforeach
 		</div>
+		@endforeach
 
 		<a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
 			<span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
@@ -46,19 +46,19 @@
 			<ul class="nav nav-tabs" data-aos="fade-up" data-aos-delay="100">
 
 				<li class="nav-item">
-					<a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+					<a class="nav-link" data-bs-toggle="tab" data-bs-target="features-tab-1">
 						<h4>Kegiatan & Berita</h4>
 					</a>
 				</li><!-- End tab nav item -->
 
 				<li class="nav-item">
-					<a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+					<a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-2">
 						<h4>Pengumuman</h4>
 					</a><!-- End tab nav item -->
 
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+					<a class="nav-link" data-bs-toggle="tab" data-bs-target="features-tab-3">
 						<h4>FAQ</h4>
 					</a>
 				</li><!-- End tab nav item -->
@@ -69,7 +69,7 @@
 
 		<div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
-			<div class="tab-pane fade active show" id="features-tab-1">
+			<div class="tab-pane fade" id="features-tab-1">
 				<div class="row">
 					<div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
 						<h3>Voluptatem dignissimos provident</h3>
@@ -89,7 +89,7 @@
 				</div>
 			</div><!-- End tab content item -->
 
-			<div class="tab-pane fade" id="features-tab-2">
+			<div class="tab-pane fade active show" id="features-tab-2">
 				<div class="row">
 					<div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0 d-flex flex-column justify-content-center">
 						<h3>Pengumuman</h3>
@@ -139,7 +139,7 @@
 			<div class="row">
 				@foreach ($headline as $item)
 					<div class="col-lg-6 mb-4 mb-lg-0">
-						<img src="uploads/{{$item->thumbnail}}" alt="Image " class="img-fluid img-overlap" data-aos="zoom-out" style="height: auto; max-height:630px; min-width:550px;max-width:100%">
+						<img src="uploads/{{$item->thumbnail}}" alt="Image " class="img-fluid img-overlap" data-aos="zoom-out" style="height: auto; max-height:auto; min-width:100%;max-width:100%">
 					</div>
 					<div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="100">
 						<h3 class="content-subtitle text-white opacity-50">Headline</h3>

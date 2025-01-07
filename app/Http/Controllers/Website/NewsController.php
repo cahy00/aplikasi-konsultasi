@@ -17,7 +17,7 @@ class NewsController extends Controller
 
 		public function allArticle()
 		{
-			$artikel = Post::with(['categories'])->where('category_id', 2)->where('status', 0)->orderBy('created_at','desc')->paginate(10);
+			$artikel = Post::with(['categories'])->where('category_id', 2)->where('status', 1)->orderBy('created_at','desc')->paginate(10);
 			$news = Post::DataSide()->get();
 			return view('website.pages.all-article', compact('artikel', 'news'));
 		}

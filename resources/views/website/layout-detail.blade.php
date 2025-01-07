@@ -48,6 +48,8 @@
 							<iframe width="100%" height="315" src="https://www.youtube.com/embed/FDFkl_vutoM?si=D9nWihItCQGu50Ze" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
 
+						<blockquote class="twitter-tweet"><p lang="in" dir="ltr">Penyesuaian kembali jadwal Seleksi untuk PPPK Tahap II. <br><br>Yukk lengkapi persyaratanya dan segera selesaikan pendaftaranmu.<a href="https://twitter.com/hashtag/PejuangNIP2025?src=hash&amp;ref_src=twsrc%5Etfw">#PejuangNIP2025</a><a href="https://twitter.com/hashtag/SatuDataASN?src=hash&amp;ref_src=twsrc%5Etfw">#SatuDataASN</a><a href="https://twitter.com/hashtag/ASNNetral?src=hash&amp;ref_src=twsrc%5Etfw">#ASNNetral</a> <a href="https://t.co/HQmMMTMz7I">pic.twitter.com/HQmMMTMz7I</a></p>&mdash; #SatuDataASN (@BKNgoid) <a href="https://twitter.com/BKNgoid/status/1876247086745936255?ref_src=twsrc%5Etfw">January 6, 2025</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
 
             <!-- Recent Posts Widget 2 -->
             <div class="recent-posts-widget-2 widget-item">
