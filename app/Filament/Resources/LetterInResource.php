@@ -85,7 +85,9 @@ class LetterInResource extends Resource
                     ->required()
 										->directory('uploads')
 										->disk('public_uploads')
-                    ->label('Upload Surat'),
+                    ->label('Upload Surat')
+										->maxSize(10240)
+										->acceptedFileTypes(['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']),
             ]);
     }
 

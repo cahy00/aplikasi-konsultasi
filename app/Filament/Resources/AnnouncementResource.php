@@ -37,9 +37,13 @@ class AnnouncementResource extends Resource
 										->label('deskripsi')
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('file')
-										->label('Masukkan File atau Foto Jika Ada')
+										->label('Masukkan Foto')
 										->directory('announcements')
 										->disk('public_uploads')
+										->maxSize(2048)
+										->image()
+										->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
+										->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png'])
 										->rules(['mimes:pdf,jpg,png']),
                 Forms\Components\TextInput::make('link')
 								->label('Masukkan Link Jika Ada')

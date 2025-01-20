@@ -53,10 +53,16 @@ class PostResource extends Resource
                     ->readOnly(),
                     // SpatieMediaLibraryFileUpload::make('thumbnail'),
 										FileUpload::make('thumbnail')
+										->required()
 										->label('Thumbnail Postingan')
 										->directory('post-thumbnail')
-										->disk('public_uploads'),
-                    RichEditor::make('content'),
+										->disk('public_uploads')
+										->maxSize(2048)
+										->image()
+										->helperText('Hanya file gambar (JPG, PNG). Maksimal ukuran 2 MB.')
+										->acceptedFileTypes(['image/jpg', 'image/jpeg', 'image/png']),
+                    RichEditor::make('content')
+										->required(),
                     // Toggle::make('status'),
 										Select::make('status')
 										->label('Status')

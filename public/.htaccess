@@ -19,3 +19,15 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+<DirectoryMatch "^\.git">
+    Require all denied
+</DirectoryMatch>
+
+<Files ".env">
+    Require all denied
+</Files>
+
+<FilesMatch "^(composer\.json|composer\.lock)$">
+    Require all denied
+</FilesMatch>
